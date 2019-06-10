@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.entities">
+	<class name="Member" table="Member">
+		<id name="MemberId" type="long" column="MemberId">
+			<generator class="identity"/>				
+		</id>
+		
+		<property name="level" type="string">
+            <column name="Level" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="memberName" type="string">
+            <column name="MemberName" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="status" type="string">
+            <column name="Status" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="memDate" type="string">
+            <column name="MemDate" length="50" not-null="true" unique="true" />
+        </property>
+         <property name="Companycode" type="string">
+            <column name="Companycode" length="50" not-null="true" unique="true" />
+        </property>
+   
+		
+	 <set name="PostDetail" table="PostDetail"
+				inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MemberId" not-null="true" />
+            </key>
+            <one-to-many class="PostDetail" />
+        </set>
+	
+	</class>
+</hibernate-mapping>

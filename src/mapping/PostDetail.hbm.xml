@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+		"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.entities">
+	<class name="PostDetail" table="PostDetail">
+		<id name="PostDetailId" type="long" column="PostDetailId">
+			<generator class="identity"/>				
+		</id>
+	
+              
+		<property name="SubContent" column="SubContent" length="150"/>
+		<property name="TelNum" column="TelNum"/>
+		<property name="PicLocation" column="PicLocation" length="100"/>
+		<property name="Screen" column="Screen" length="70"/>
+		<property name="Contact" column="Contact" length="100"/>
+		<property name="userDate" column="UserDate" length="20"/>
+		<property name="Docno" column="Docno" length="50"/>
+		<property name="user" column="User" length="50"/>
+		
+		<many-to-one name="PostMaster" column="PostMasterId" class="PostMaster" not-null="true"/>
+        <many-to-one name="Member" column="MemberId" class="Member" not-null="true"/>
+	</class>
+</hibernate-mapping>
